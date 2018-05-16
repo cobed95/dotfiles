@@ -7,25 +7,19 @@
 
 #-------------------- HOMEBREW SECTION ----------------------.
 # Check if homebrew is installed and install it otherwise.
-which brew > brewpath
-BREWPATH=$(echo $brewpath)
-export BREWPATH
+BREWPATH=$(which brew)
 if [[ $BREWPATH="brew not found" ]]
 then /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 brew update
-rm brewpath
 
 
 #---------------------- GIT SECTION -------------------------.
 # Check if git is installed and install it otherwise.
-which git > gitpath
-GITPATH=$(echo $gitpath)
-export GITPATH
+GITPATH=$(which git)
 if [[ $GITPATH="git not found" ]]
 then brew install git
 fi
-rm gitpath
 
 # Set user info.
 git config --global user.name "Eundo Lee"
@@ -42,70 +36,43 @@ git clone git@github.com:cobed95/learning-ps.git ../
 ######## PYTHON ########
 
 # Check if Python3 is installed and install it otherwise.
-which python3 > python3path
-PYTHON3PATH=$(echo $python3path)
-export PYTHON3PATH
+PYTHON3PATH=$(which python3)
 if [[ $PYTHON3PATH="python3 not found" ]]
 then brew install python3
 fi
-rm python3path
 
 # Automatically update Python3.
 brew update python3
 
 # Check if pip is installed and install it otherwise.
 # pip is included in the brew python3 package.
-which pip > pippath
-PIPPATH=$(echo $pippath)
-export PIPPATH
+PIPPATH=$(which pip)
 if [[ $PIPPATH="pip not found" ]]
 then echo "pip not found even after installing python3 through homebrew. Installing through root..."
     sudo easy-install pip
 fi
-rm pippath
 
 # Automatically update pip.
 pip install --upgrade pip
 
-# Install external modules through pip.
-# NumPy
-pip install numpy
-
-# MatPlotLib
-pip install --upgrade matplotlib
-
-# PyGame
-pip install --upgrade pygame
-
 # VirtualEnv
 pip install --upgrade virtualenv
-
-# TensorFlow
-virtualenv --system-site-packages -p python3 ~/tensorflow
-cd ~/tensorflow
-source ./bin/activate
-pip3 install --upgrade tensorflow
-deactivate
-cd ~/dotfiles
 
 
 ######## JAVA ########
 
 # Check if Java is installed and install it otherwise.
-which java > javapath
-JAVAPATH=$(echo $javapath)
-export JAVAPATH
+JAVAPATH=$(which java)
 if [[ $JAVAPATH="java not found" ]]
 then brew cask install java9
 fi
-rm javapath
 
 # Automatically update Java
 brew cask update java
 
 
 #------------------ PERSONAL PREFERENCES --------------------.
-#Install Oh My Zsh using wget.
+# Install Oh My Zsh using wget.
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 # Install Amix's awesome vimrc.

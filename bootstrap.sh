@@ -64,7 +64,7 @@ pip install --upgrade virtualenv
 # Check if Java is installed and install it otherwise.
 JAVAPATH=$(which java)
 if [[ $JAVAPATH="java not found" ]]
-then brew cask install java9
+then brew cask install java
 fi
 
 # Automatically update Java

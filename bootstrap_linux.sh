@@ -49,6 +49,17 @@ if [[ $JAVAPATH="java not found" ]]
 then sudo apt-get install openjdk-10-jdk
 fi
 
+######## NODE ########
+sudo apt-get install build-essential libssl-dev
+curl https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+source ~/.profile
+nvm --version
+nvm install 12.6
+nvm alias default 12.6
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get install --no-install-recommends yarn
+yarn --version
 
 #------------------ PERSONAL PREFERENCES --------------------.
 # Install Oh My Zsh using wget.

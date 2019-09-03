@@ -1,2 +1,2 @@
-./setup_nvm.sh
-./setup_yarn.sh
+./node/setup_nvm.sh
+./node/setup_yarn.sh

@@ -1,7 +1,8 @@
-echo "This installation script is intended for Ubuntu 18.04"
-echo "For running make, this script assumes that you have 4 or more cores available"
+echo "This installation script is intended for Ubuntu 18.04."
+echo "For running make, this script assumes that you have 4 or more cores available."
+echo ""
 
-read -p "Did you install CMake 3.15 or higher? Y/n" answer
+read -p "Did you install CMake with version 3.15 or higher? Y/n " answer
 if [ "Y" == "$answer" ]; then
     echo "Updating Ubuntu distribution..."
     sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
@@ -27,4 +28,7 @@ if [ "Y" == "$answer" ]; then
     sudo make uninstall && make clean && make -j4 && sudo make install
 
     echo "Finished manually building librealsense2. Enjoy!"
+
+else
+    echo "CMake with version 3.15 or higher is required."
 fi
